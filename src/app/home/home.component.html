@@ -1,0 +1,68 @@
+<style>
+    /* Basic styling for readability */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+    }
+
+    h1,
+    h2 {
+        color: #333;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: #1e90ff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .image-container {
+        margin: 20px 0;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+</style>
+<header>
+    <h1>Welcome to the Weather API</h1>
+</header>
+<main class="container">
+    <section id="home">
+        <div class="image-container">
+            <!-- Replace 'weather-image.jpg' with the path to your image -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzw3uH9MTICJISiFvoORhq3OR8IO5fUMda8w&s"
+                alt="Weather Illustration">
+        </div>
+        <h2>Home</h2>
+        <p>
+            Welcome to the Weather API service. This application provides a simple way to interact with weather data
+            through various routes. Below is an overview of the available routes:
+        </p>
+        <ul>
+            <li><strong><a href="/" routerLink="/">Home</a></strong> - The main page where you can find an overview of
+                the Weather API and its functionalities.</li>
+            <li><strong><a href="/api" routerLink="/api">API</a></strong> - This route provides detailed information
+                about how to use the Weather API, including endpoints and request formats.</li>
+            <li><strong><a href="/form" routerLink="/form">Form</a></strong> - This route includes a form where you can
+                input specific parameters to fetch weather data directly from the API.</li>
+        </ul>
+    </section>
+</main>

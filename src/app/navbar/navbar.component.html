@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Home</title>
+    <style>
+        /* Basic Reset */
+        body,
+        h1,
+        p,
+        a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar container styling */
+        nav {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Navbar links styling */
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: bold;
+        }
+
+        /* Hover effects for links */
+        nav a:hover {
+            background-color: #555;
+            color: #ff9800;
+        }
+
+        /* Active link styling */
+        nav a.active {
+            background-color: #ff9800;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" routerLink="/" routerLinkActive="active">HOME</a>
+        <a href="/api" routerLink="/api" routerLinkActive="active">API</a>
+        <a href="/form" routerLink="/form" routerLinkActive="active">FORM</a>
+    </nav>
+</body>
+
+</html>
