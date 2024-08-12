@@ -1,1 +1,109 @@
-<p>Hello</p>
+<div class="container">
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="form-container">
+        <label for="email" class="form-label">
+            <span>Email</span>
+            <input type="email" formControlName="email" id="email" class="form-input" />
+            <div *ngIf="email?.touched && email?.invalid" class="error-message">
+                <div *ngIf="email?.errors?.['required']">Email is required.</div>
+                <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
+            </div>
+        </label>
+
+        <label for="feedback" class="form-label">
+            <span>Feedback</span>
+            <textarea formControlName="feedback" id="feedback" class="form-textarea"></textarea>
+            <div *ngIf="feedback?.touched && feedback?.invalid" class="error-message">
+                <div *ngIf="feedback?.errors?.['required']">Feedback is required.</div>
+                <div *ngIf="feedback?.errors?.['minlength']">
+                    Feedback must be at least 10 characters long.
+                </div>
+            </div>
+        </label>
+
+        <button type="submit" class="form-button" [disabled]="feedbackForm.invalid">Submit</button>
+    </form>
+</div>
+
+
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        height: 100dvh;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .form-label span {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .form-textarea {
+        resize: vertical;
+        height: 100px;
+    }
+
+    .form-button {
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+        background-color: #0056b3;
+    }
+
+    .form-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .invalid {
+        border-color: red;
+    }
+</style>

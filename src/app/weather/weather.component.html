@@ -1,16 +1,122 @@
-<div *ngIf="weatherData; else loading">
-    <h1>Current Weather</h1>
-    <p><strong>Location:</strong> {{ weatherData.name }}, {{ weatherData.sys.country }}</p>
-    <p><strong>Temperature:</strong> {{ weatherData.main.temp }} °C</p>
-    <p><strong>Weather:</strong> {{ weatherData.weather[0].description }}</p>
-    <p><strong>Humidity:</strong> {{ weatherData.main.humidity }}%</p>
-    <p><strong>Wind Speed:</strong> {{ weatherData.wind.speed }} m/s</p>
+<div class="container">
+    <form (formGroup)="locationForm" class="form-container">
+        <!-- <label for="location" class="form-label">
+            <span>Location</span>
+            <input type="text" formControlName="location" id="location" class="form-input" />
+            <div *ngIf="location?.touched && location?.invalid" class="error-message">
+                <div *ngIf="location?.errors?.['required']">Location is required.</div>
+            </div>
+        </label> -->
+
+        <button (click)="getWeather()" type="button" class="form-button">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Load Weather Data
+        </button>
+    </form>
+
+    <div *ngIf="weatherData; else loading" class="weather-data">
+        <h1 class="weather-title">Current Weather</h1>
+        <p><strong>Location:</strong> {{ weatherData.name }}, {{ weatherData.sys.country }}</p>
+        <p><strong>Temperature:</strong> {{ weatherData.main.temp }} °C</p>
+        <p><strong>Weather:</strong> {{ weatherData.weather[0].description }}</p>
+        <p><strong>Humidity:</strong> {{ weatherData.main.humidity }}%</p>
+        <p><strong>Wind Speed:</strong> {{ weatherData.wind.speed }} m/s</p>
+    </div>
+
+    <ng-template #loading>
+        <p>Loading...</p>
+    </ng-template>
+
+    <ng-template #error>
+        <p>{{ error }}</p>
+    </ng-template>
 </div>
 
-<ng-template #loading>
-    <p>Loading...</p>
-</ng-template>
 
-<ng-template #error>
-    <p>{{ error }}</p>
-</ng-template>
+<style>
+    .container {
+        padding: 50px 0px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    .form-label span {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-input {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .form-button {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+        background-color: #0056b3;
+    }
+
+    .form-button .icon {
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .weather-data {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+    }
+
+    .weather-title {
+        margin-bottom: 15px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+</style>

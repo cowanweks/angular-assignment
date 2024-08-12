@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
-import { WeatherComponent } from './weather.component';
-import { HttpClient } from '@angular/common/http'; // Import HttpClientModule if using HttpClient
+import { WeatherService } from '../weather.service';
 
 @NgModule({
-  declarations: [WeatherComponent],
+  declarations: [],
   imports: [CommonModule],
-  providers: [HttpClient],
+  providers: [WeatherService],
 })
 export class WeatherModule {}

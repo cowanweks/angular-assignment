@@ -1,18 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { Component, NgModule, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
-  selector: 'app-form',
+  selector: 'form-component',
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './form.component.html',
-  styleUrl: './form.component.css',
 })
-export class FormComponent implements OnInit {
-  name = new FormControl('');
-  myForm: FormGroup | undefined;
+export class FormComponent {
+  feedbackForm: FormGroup;
 
-  ngOnInit() {
-    this.myForm = new FormGroup({
-      myControl: new FormControl(''),
+  constructor() {
+    this.feedbackForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      feedback: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+      ]),
     });
+  }
+
+  onSubmit() {
+    if (this.feedbackForm.valid) {
+      // console.log('Form Submitted:', this.feedbackForm.value);
+      alert('Thank you for your FeedBack');
+    } else {
+      alert('Form is invalid');
+      this.feedbackForm.markAllAsTouched(); // Mark all fields as touched to trigger validation messages
+    }
+  }
+
+  get email() {
+    return this.feedbackForm.get('email');
+  }
+
+  get feedback() {
+    return this.feedbackForm.get('feedback');
   }
 }
