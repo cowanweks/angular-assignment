@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -18,6 +18,7 @@ export class FormComponent {
 
   constructor() {
     this.feedbackForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       feedback: new FormControl('', [
         Validators.required,
@@ -28,7 +29,7 @@ export class FormComponent {
 
   onSubmit() {
     if (this.feedbackForm.valid) {
-      // console.log('Form Submitted:', this.feedbackForm.value);
+      console.log('Form Submitted:', this.feedbackForm.value);
       alert('Thank you for your FeedBack');
     } else {
       alert('Form is invalid');
@@ -36,6 +37,9 @@ export class FormComponent {
     }
   }
 
+  get name() {
+    return this.feedbackForm.get('name');
+  }
   get email() {
     return this.feedbackForm.get('email');
   }

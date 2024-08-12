@@ -1,5 +1,12 @@
 <div class="container">
     <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="form-container">
+        <label for="name" class="form-label">
+            <span>Name</span>
+            <input type="name" formControlName="name" id="name" class="form-input" />
+            <div *ngIf="name?.touched && name?.invalid" class="error-message">
+                <div *ngIf="name?.errors?.['required']">Name is required.</div>
+            </div>
+        </label>
         <label for="email" class="form-label">
             <span>Email</span>
             <input type="email" formControlName="email" id="email" class="form-input" />

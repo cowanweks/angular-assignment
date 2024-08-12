@@ -1,12 +1,12 @@
 <div class="container">
-    <form (formGroup)="locationForm" class="form-container">
-        <!-- <label for="location" class="form-label">
+    <form [formGroup]="locationForm" class="form-container" (ngSubmit)="onSubmit()">
+        <label for="location" class="form-label">
             <span>Location</span>
             <input type="text" formControlName="location" id="location" class="form-input" />
             <div *ngIf="location?.touched && location?.invalid" class="error-message">
                 <div *ngIf="location?.errors?.['required']">Location is required.</div>
             </div>
-        </label> -->
+        </label>
 
         <button (click)="getWeather()" type="button" class="form-button">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
